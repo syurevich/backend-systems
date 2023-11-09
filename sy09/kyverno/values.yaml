@@ -1,0 +1,26 @@
+#############################################################################
+# START OF SECTION
+
+# Disable metrics as much as possible to test whether constant increase in
+# memory utilization is caused by metrics.
+config:
+  metricsConfig:
+    namespaces:
+      include:
+      - dummy4395724
+    metricsRefreshInterval: 24h
+
+extraArgs:
+# from Helm chart built-in or Installer:
+- --loggingFormat=text
+- --exceptionNamespace=kyverno
+- --autoUpdateWebhooks=false
+
+metricsService:
+  create: false
+
+serviceMonitor:
+  enabled: false
+
+# END OF SECTION
+#############################################################################
